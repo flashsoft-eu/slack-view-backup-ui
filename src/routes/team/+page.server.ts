@@ -1,23 +1,17 @@
 import { getJsonFromDataFile } from '$lib/utils/file';
-import type { ChannelThread, LoadData } from '$lib/types/types';
+import type { TeamApiResponse, LoadData } from '$lib/types/types';
 import type { PageServerLoad } from './$types';
 
 
-export const load = (async ({ params  }) => {
+export const load = (async () => {
     const [channels, users, team] = await Promise.all([getJsonFromDataFile('channels.json'), getJsonFromDataFile('users.json'), getJsonFromDataFile('team.json')])
-  
-  const { channel_id, thread_id } = params
-
-  const team = await getJsonFromDataFile(`team.json`) as ChannelThread
 
   return {
    data : {
-    channel_thread,
-    channel_id,
     is_thread: true,
     channels,
     users,
-    team
+    team: team as TeamApiResponse
     
    } as LoadData
   };
