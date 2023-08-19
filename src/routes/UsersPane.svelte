@@ -17,7 +17,6 @@
     </script>
      <div class="users grid lg:grid-cols-3	md:grid-cols-2 sm:grid-cols-1 gap-3">
     {#each users as user}
-    <li> 
         <div class="user card ml-10 mr-10 my-2 bg-base-100 shadow-xl">
             <div class="card-body">
                 <div class="card-title flex items-center">
@@ -44,11 +43,7 @@
                 {#if user.profile.phone}
                 <li>Phone: <b>{user.profile.phone}</b></li>
                 {/if}
-
-
- 
              </ul>
-            
             </div>
           </div>
     {/each}
@@ -64,9 +59,5 @@
         font-size: 0.8rem;
         }
     }
-
-    .users li::marker {
-        content: '';
-    }
-
+ 
 </style>

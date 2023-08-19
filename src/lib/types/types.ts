@@ -157,12 +157,40 @@ export type ChannelThread = {
     messages: Message[];
 }
 
+type TeamIcon = {
+  image_default: boolean;
+  image_34: string;
+  image_44: string;
+  image_68: string;
+  image_88: string;
+  image_102: string;
+  image_230: string;
+  image_132: string;
+};
+
+type Team = {
+  id: string;
+  name: string;
+  url: string;
+  domain: string;
+  email_domain: string;
+  icon: TeamIcon;
+  avatar_base_url: string;
+  is_verified: boolean;
+};
+
+export type TeamApiResponse = {
+  ok: boolean;
+  team: Team;
+};
+
 export type LoadData =  {
     channels: Conversation[],
     users: User[],
     channel: ChannelRoot
-    team: unknown
+    team: TeamApiResponse
     channel_id: string
     is_thread: boolean
     channel_thread?: ChannelThread
 }
+

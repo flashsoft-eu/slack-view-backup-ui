@@ -1,6 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 import { getJsonFromDataFile } from '$lib/utils/file';
-import type { User, Conversation, ChannelRoot, LoadData } from '$lib/types/types';
+import type { User, Conversation, ChannelRoot, LoadData, TeamApiResponse } from '$lib/types/types';
 
 export const load = (async () => {
 
@@ -10,7 +10,7 @@ export const load = (async () => {
    data : {
     channels: channels as Conversation[],
     users: users as User[],
-    team,
+    team: team as TeamApiResponse,
     channel,
     channel_id: channels[0].id,
     is_thread: false

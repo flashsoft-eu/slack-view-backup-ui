@@ -8,10 +8,10 @@ export let data: {
     } = {
         data: null
     }
-
-    export let first_im = false
-    export let first_mpim = false 
-    export let first_channel = false
+   
+    const channels = data.data?.channels.filter((channel) => !channel.is_im && !channel.is_mpim) as LoadData['channels']
+    const ims = data.data?.channels.filter((channel) => channel.is_im) as LoadData['channels']
+    const mpims = data.data?.channels.filter((channel) => channel.is_mpim) as LoadData['channels']
     
  
  
@@ -21,44 +21,75 @@ console.log(getUser(data.data?.users?.[0]?.id as string, data.data?.users as any
 </script>
 
 
+<!-- 
+{:else if item?.is_im}
+{#if !first_im}
+<span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">Direct Messages:</span>
+<li class="-ml-12 block"></li>
+{(() => {first_im = true})()}
+{/if}
+{@const user = getUser(item.user, data.data?.users)}
+DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inline-block w-4 h-4 rounded-full" /> 
+{:else if item?.is_mpim}
+{#if !first_mpim}
+<span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">Groups:</span>
+<li class="-ml-12 block"></li>
+{(() => {first_mpim = true; console.log(item)})()}
+{/if}
+{item.purpose.value} -->
+
+
 <ul class="menu w-60 rounded-box menu-custom">
-    {#if data.data?.channels?.length}
-    {#each data.data?.channels as item}
+    {#if channels?.length}
+    <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">Channels:</span>
+    <li class="-ml-12 block"></li>
+    {#each channels as item}
         <li>
        <a href="{`/channel/${item.id}`}" class="block p-4 hover:bg-gray-700 hover:text-white">
-       <span class="block mt-4 text-[1rem]">
-       {#if !item?.is_im && !item?.is_mpim }
-       {#if !first_channel && (() => {first_channel = true; return true})()}
-       <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">Channels:</span>
-       <li class="-ml-12 block"></li>
-       {/if}
-        <i><b>#</b></i>{item.name}
-        {:else if item?.is_im}
-        {#if !first_im}
-        <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">Direct Messages:</span>
-        <li class="-ml-12 block"></li>
-        {(() => {first_im = true})()}
-        {/if}
-        {@const user = getUser(item.user, data.data?.users)}
-        DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inline-block w-4 h-4 rounded-full" /> 
-        {:else if item?.is_mpim}
-        {#if !first_mpim}
-        <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">Groups:</span>
-        <li class="-ml-12 block"></li>
-        {(() => {first_mpim = true; console.log(item)})()}
-        {/if}
-        {item.purpose.value}
-        
-        {/if}
+       <span class="block mt-2 text-[1rem]">
+       <i><b>#</b></i>{item.name}
         </span>
             <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">id: {item.id}</span>
         </a>
         </li>
     {/each}
-    {:else}
-    <li>No channels found</li>
-    <li>Be sure data folder is not empty</li>
-    {/if} 
+    {/if}
+    {#if ims?.length}
+    <span class="block opacity-60 text-[0.8rem] mt-6 ml-2">Direct Messages:</span>
+    <li class="-ml-12 block"></li>
+    {#each ims as item}
+    {@const user = getUser(item.user, data.data?.users || [])}
+
+        <li>
+       <a href="{`/channel/${item.id}`}" class="block p-4 hover:bg-gray-700 hover:text-white">
+       <span class="block mt-2 text-[1rem]">
+        DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inline-block w-4 h-4 rounded-full" /> 
+        </span>
+            <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">id: {item.id}</span>
+        </a>
+        </li>
+    {/each}
+    {/if}
+    {#if mpims?.length}
+    <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">Groups:</span>
+    <li class="-ml-12 block"></li>
+    {#each mpims as item}
+        <li>
+       <a href="{`/channel/${item.id}`}" class="block p-4 hover:bg-gray-700 hover:text-white">
+       <span class="block mt-2 text-[1rem]">
+        {item.purpose.value}
+        </span>
+            <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">id: {item.id}</span>
+        </a>
+        </li>
+    {/each}
+    {/if}
+
+
+    {#if  !channels?.length && !mpims?.length && ims?.length}
+    <li>No data found</li>
+    <li>Check that <b>src/data</b> has the correct jsons files</li>
+    {/if}
 </ul>
 
 <style lang="scss">

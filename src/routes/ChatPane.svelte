@@ -43,7 +43,7 @@
         {@const user = getUser(item.user, data.data?.users)}
 
             <li> 
-                <div class="card ml-10 mr-10 my-2 bg-base-100 shadow-xl">
+                <div class="card ml-10 mr-10 my-2 shadow-xl bg-zinc-900">
                     <div class="card-body">
                         <div class="card-title flex items-center">
                       <h2 class="font-bold"><img src={user?.profile?.image_48} alt="user avatar" class="inline-block w-8 h-8 rounded-full" /> <span class="ml-1">{user?.name}</span> </h2>
