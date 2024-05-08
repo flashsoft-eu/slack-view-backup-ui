@@ -106,6 +106,7 @@ DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inl
     display: block;
     min-width: 12rem;
     background-color: #0e0d12c7;
+    overflow-x: hidden;
         scrollbar-width: thin;
         &::-webkit-scrollbar {
             width: 4px;
