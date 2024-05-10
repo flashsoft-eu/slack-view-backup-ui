@@ -51,6 +51,9 @@ type UserProfile = {
     updated: number;
     is_email_confirmed: boolean;
     who_can_share_contact_card: string;
+    profile_image_24: string;
+    profile_image_32: string;
+    profile_image_48: string;
   };
   
 
@@ -94,6 +97,7 @@ type UserProfile = {
     is_member: boolean;
     topic: ConversationTopic;
     purpose: ConversationPurpose;
+    purpose_value?: string;
     previous_names: string[];
     num_members: number;
   };
@@ -187,10 +191,9 @@ export type TeamApiResponse = {
 export type LoadData =  {
     channels: Conversation[],
     users: User[],
-    channel: ChannelRoot
     team: TeamApiResponse
     channel_id: string
     is_thread: boolean
-    channel_thread?: ChannelThread
+    messages?: Message[]
 }
 

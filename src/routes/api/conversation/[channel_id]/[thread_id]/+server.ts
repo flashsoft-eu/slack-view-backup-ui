@@ -1,14 +1,13 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { getJsonFromDataFile } from '$lib/utils/file'
- 
+import { getMessages } from '$lib/utils/sqlite'
+
 export const GET: RequestHandler = async ({ params }) => {
   try {
     const { channel_id, thread_id } = params
     
-    const path = `conversations_${channel_id}_${thread_id}.json`
     
-    return json({ data: getJsonFromDataFile(path) }, { status: 200})
+    return json({ data: getMessages(channel_id, thread_id) }, { status: 200})
 
     } catch (e) {
       console.log(e)

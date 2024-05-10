@@ -1,0 +1,66 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\andrei0x309\AppData\Local\Yarn\Data\global\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  K:\dev\sdk\Python311\Scripts;K:\dev\sdk\Python311;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\Program Files\Eclipse Foundation\jdk-8.0.302.8-hotspot\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;K:\dev\apps\cygwin64N;K:\dev\apps\cygwin64N\bin;K:\www\apps\php-7.4.4-nts-Win32-vc15-x64;C:\ProgramData\ComposerSetup\bin;K:\dev\sdk\Android\tools;K:\dev\sdk\Android\platform-tools;K:\dev\sdk\Java\jdk1.8.0_162\bin;C:\Users\andrei0x309\.gradle\wrapper\dists\gradle-5.6.4-all\ankdp27end7byghfw1q2sw75f\gradle-5.6.4\bin;K:\dev\sdk\Android\build-tools\29.0.3;K:\dev\apps\exercism;K:\dev\apps\kotlin-native-windows-1.4.21\bin;C:\metasploit-framework\bin\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Users\andrei0x309\AppData\Local\Yarn\bin;C:\Users\andrei0x309\AppData\Roaming\npm;K:\dev\chromium\depot_tools;K:\dev\apps\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Amazon\AWSCLIV2\;C:\Users\andrei0x309\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\GitHub CLI\;C:\msys64\mingw64\bin;C:\Program Files (x86)\Graphviz\bin;C:\Program Files\PuTTY\;K:\dev\apps\Git2.26\cmd;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files (x86)\AOMEI\AOMEI Backupper\7.3.3;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Program Files\Go\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Cloudflare\Cloudflare WARP\;K:\dev\sdk\Python311\Scripts;K:\dev\sdk\Python311;C:\Users\andrei0x309\AppData\Local\pnpm;C:\Users\andrei0x309\.cargo\bin;C:\Users\andrei0x309\.windows-build-tools\python27\;C:\Users\andrei0x309\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\andrei0x309\AppData\Roaming\npm\node_modules\node_modules\.bin;C:\Users\andrei0x309\AppData\Roaming\npm\node_modules\.bin;C:\Users\andrei0x309\AppData\Roaming\node_modules\.bin;C:\Users\andrei0x309\AppData\node_modules\.bin;C:\Users\andrei0x309\node_modules\.bin;C:\Users\node_modules\.bin;C:\node_modules\.bin;C:\Users\andrei0x309\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\run-script\lib\node-gyp-bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;K:\dev\apps\cygwin64N;K:\dev\apps\cygwin64N\bin;K:\www\apps\php-7.4.4-nts-Win32-vc15-x64;C:\ProgramData\ComposerSetup\bin;K:\dev\sdk\go\bin;K:\dev\sdk\Android\tools;K:\dev\sdk\Android\platform-tools;K:\dev\sdk\Java\jdk1.8.0_162;K:\dev\apps\Microsoft VS Code - Win2\bin;C:\Users\andrei0x309\.deno\bin\;C:\Users\andrei0x309\.dotnet\tools;C:\Users\andrei0x309\AppData\Roaming\npm;C:\Users\andrei0x309\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\andrei0x309\AppData\Roaming\cockroach;C:\Users\andrei0x309\AppData\Roaming\ccloud;K:\dev\apps\depot_tools;C:\Users\andrei0x309\go\bin;C:\ffmpeg\bin;C:\Users\andrei0x309\.fly\bin;C:\Users\andrei0x309\go\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64;
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.10.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'K:\dev\projects\deno\slack-view-backup-frontend\node_modules\@esbuild\win32-x64\esbuild.exe'
+
+npm manifest: 
+  {
+  	"name": "slack-view-backup-frontend",
+  	"version": "0.0.1",
+  	"scripts": {
+  		"dev": "vite dev",
+  		"build": "vite build",
+  		"preview": "vite preview",
+  		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+  		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+  		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+  		"format": "prettier --plugin-search-dir . --write ."
+  	},
+  	"devDependencies": {
+  		"@fontsource/fira-mono": "^4.5.10",
+  		"@neoconfetti/svelte": "^1.0.0",
+  		"@sveltejs/adapter-auto": "^3.0.0",
+  		"@sveltejs/adapter-node": "^2.0.0",
+  		"@sveltejs/kit": "^2.0.0",
+  		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+  		"@types/cookie": "^0.5.1",
+  		"@types/node": "^20.5.1",
+  		"@typescript-eslint/eslint-plugin": "^5.45.0",
+  		"@typescript-eslint/parser": "^5.45.0",
+  		"autoprefixer": "^10.4.15",
+  		"daisyui": "^3.5.1",
+  		"eslint": "^8.28.0",
+  		"eslint-config-prettier": "^8.5.0",
+  		"eslint-plugin-svelte": "^2.30.0",
+  		"postcss": "^8.4.28",
+  		"prettier": "^2.8.0",
+  		"prettier-plugin-svelte": "^2.10.1",
+  		"sass": "^1.66.1",
+  		"svelte": "^4.0.5",
+  		"svelte-check": "^3.4.3",
+  		"tailwindcss": "^3.3.3",
+  		"tslib": "^2.4.1",
+  		"typescript": "^5.0.0",
+  		"vite": "^5.0.0"
+  	},
+  	"type": "module"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

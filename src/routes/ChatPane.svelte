@@ -11,23 +11,24 @@
     
     let page = 0
     let isThread = data.data?.is_thread
-    let messages = !isThread ? data.data?.channel?.[page] || [] : data.data?.channel_thread?.messages || []
+    let messages = data.data?.messages || []
+
+    console.log(messeges, messages);
  
     let loading = false
-    const loadNext = () => {
-        if (loading  || ( data?.data?.channel?.length && page > data?.data?.channel?.length) ) return
-        loading = true
-        page++
-        messages = [...messages, ...(data.data?.channel?.[page] || [])]
-        loading = false
-    }
+    // const loadNext = () => {
+    //     if (loading  || ( data?.data?.channel?.length && page > data?.data?.channel?.length) ) return
+    //     loading = true
+    //     page++
+    //     messages = [...messages, ...(data.data?.channel?.[page] || [])]
+    //     loading = false
+    // }
 
     const isoStringFromTs = (ts: string) => {
         const date = new Date(parseInt(ts) * 1000)
         return date.toISOString()
     }
 
-    // console.log(data.data?.firstChannel);
     // console.log(getUser(data.data?.users?.[0]?.id, data.data?.users));
     
     </script>
@@ -46,7 +47,7 @@
                 <div class="card ml-10 mr-10 my-2 shadow-xl bg-zinc-900">
                     <div class="card-body">
                         <div class="card-title flex items-center">
-                      <h2 class="font-bold"><img src={user?.profile?.image_48} alt="user avatar" class="inline-block w-8 h-8 rounded-full" /> <span class="ml-1">{user?.name}</span> </h2>
+                      <h2 class="font-bold"><img src={user?.profile?.image_48 ?? user?.profile_image_48 } alt="user avatar" class="inline-block w-8 h-8 rounded-full" /> <span class="ml-1">{user?.name}</span> </h2>
                       <p class="opacity-90 ml-0 text-start text-[0.85rem]">{isoStringFromTs(item.ts)}</p>
                       </div>
                       <p class="my-2 ml-4 text-[1.05rem]">{item.text}</p>
@@ -62,9 +63,9 @@
         {#if loading} 
                 <p class="text-[1.2rem]">LOADING...</p>
         {/if}
-        <IntersectionObserver on:intersect={loadNext} {element}>
+        <!-- <IntersectionObserver on:intersect={loadNext} {element}>
             <div bind:this={element}></div>
-          </IntersectionObserver>
+          </IntersectionObserver> -->
         {:else}
         <li class="ml-4">No messages found</li>
         {/if} 

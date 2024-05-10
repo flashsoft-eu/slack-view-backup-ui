@@ -1,18 +1,18 @@
-import { getJsonFromDataFile } from '$lib/utils/file';
-import type { ChannelThread, LoadData } from '$lib/types/types';
+import type { LoadData } from '$lib/types/types';
 import type { PageServerLoad } from './$types';
+import { getMessages } from '$lib/utils/sqlite'
 
 
-export const load = (async ({ params  }) => {
-    const [channels, users, team] = await Promise.all([getJsonFromDataFile('channels.json'), getJsonFromDataFile('users.json'), getJsonFromDataFile('team.json')])
-  
+export const load = (async ({ params, parent  }) => {
+  const { channels, users, team} =  (await parent()).data
+
   const { channel_id, thread_id } = params
 
-  const channel_thread = await getJsonFromDataFile(`conversations_${channel_id}_${thread_id}.json`) as ChannelThread
+  const messages = getMessages(channel_id, thread_id)
 
   return {
    data : {
-    channel_thread,
+    messages,
     channel_id,
     is_thread: true,
     channels,

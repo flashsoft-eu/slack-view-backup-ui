@@ -1,17 +1,17 @@
-import { getJsonFromDataFile } from '$lib/utils/file';
-import type { ChannelRoot } from '$lib/types/types';
+import type { Message } from '$lib/types/types';
 import type { PageServerLoad } from './$types';
+import { getMessages } from '$lib/utils/sqlite'
 
 
-export const load = (async ({ params  }) => {
+export const load = (async ({ params, parent   }) => {
   const { id } = params
-  const [channels, users, team] = await Promise.all([getJsonFromDataFile('channels.json'), getJsonFromDataFile('users.json'), getJsonFromDataFile('team.json')])
+  const { channels, users, team} =  (await parent()).data
 
-  const channel = await getJsonFromDataFile(`conversations_${id}.json`) as ChannelRoot
+  const messages =  getMessages(id) as Message[]
 
   return {
    data : {
-    channel,
+    messages,
     channels,
     users,
     team,

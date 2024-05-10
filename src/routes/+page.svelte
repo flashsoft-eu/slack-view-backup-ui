@@ -16,7 +16,7 @@
 </svelte:head>
  
  {#key  data.data?.channel_id}
-    {#if data.data?.channel}
+    {#if data.data?.messages?.length}
     <ChatPane data={data} />
     {:else}
         <h1 class="text-2xl font-bold">Loading...</h1>

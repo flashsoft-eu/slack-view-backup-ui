@@ -16,7 +16,7 @@ export let data: {
  
  
 // console.log(data.data?.firstChannel);
-console.log(getUser(data.data?.users?.[0]?.id as string, data.data?.users as any));
+// console.log('\n\n\n\n', mpims ,'\n\n\n\n');
 
 </script>
 
@@ -59,11 +59,10 @@ DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inl
     <li class="-ml-12 block"></li>
     {#each ims as item}
     {@const user = getUser(item.user, data.data?.users || [])}
-
         <li>
        <a href="{`/channel/${item.id}`}" class="block p-4 hover:bg-gray-700 hover:text-white">
        <span class="block mt-2 text-[1rem]">
-        DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inline-block w-4 h-4 rounded-full" /> 
+        DM: {user?.name} <img src={user?.profile?.image_24 ?? user?.profile_image_24} alt="user avatar" class="inline-block w-4 h-4 rounded-full" /> 
         </span>
             <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">id: {item.id}</span>
         </a>
@@ -77,7 +76,7 @@ DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inl
         <li>
        <a href="{`/channel/${item.id}`}" class="block p-4 hover:bg-gray-700 hover:text-white">
        <span class="block mt-2 text-[1rem]">
-        {item.purpose.value}
+        {item.purpose?.value || item?.purpose_value || 'Group'}
         </span>
             <span class="block opacity-60 text-[0.8rem] -mt-1 ml-2">id: {item.id}</span>
         </a>

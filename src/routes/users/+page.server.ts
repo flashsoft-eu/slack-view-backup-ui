@@ -1,9 +1,8 @@
-import { getJsonFromDataFile } from '$lib/utils/file';
 import type { PageServerLoad } from './$types';
 
 
-export const load = (async () => {
-  const [channels, users] = await Promise.all([getJsonFromDataFile('channels.json'), getJsonFromDataFile('users.json'), getJsonFromDataFile('team.json')])
+export const load = (async ({ parent }) => {
+  const { channels, users} =  (await parent()).data
   return {
    data : {
     channels,
