@@ -15,7 +15,7 @@
 	<meta name="description" content="Svelte demo app" />   
 </svelte:head>
  
- {#key  data.data?.team?.ok}
+ {#key  data.data?.team?.id}
     {#if data.data?.team}
     <TeamPane data={data} />
     {:else}

@@ -1,5 +1,5 @@
 import type { LayoutServerLoad } from './$types';
-import type { User, Conversation, LoadData, TeamApiResponse, Channel } from '$lib/types/types';
+import type { User, Conversation, LoadData, Team, Channel } from '$lib/types/types';
 import { getChannels, getUsers, getTeam, getMessages } from '$lib/utils/sqlite';
  
 export const load = (async () => {
@@ -22,7 +22,7 @@ export const load = (async () => {
    data : {
     channels: channels as Conversation[],
     users: users as User[],
-    team: team as TeamApiResponse,
+    team: team as Team,
     channel_id: channelId,
     is_thread: false,
     messages

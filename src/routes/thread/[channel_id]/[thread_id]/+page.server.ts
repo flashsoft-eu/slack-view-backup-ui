@@ -1,6 +1,6 @@
 import type { LoadData } from '$lib/types/types';
 import type { PageServerLoad } from './$types';
-import { getMessages } from '$lib/utils/sqlite'
+import { getMessages, getThread } from '$lib/utils/sqlite'
 
 
 export const load = (async ({ params, parent  }) => {
@@ -8,7 +8,9 @@ export const load = (async ({ params, parent  }) => {
 
   const { channel_id, thread_id } = params
 
-  const messages = getMessages(channel_id, thread_id)
+  const root = getMessages(channel_id, thread_id)
+  const replies = getThread(channel_id, thread_id)
+  const messages = [...root, ...replies]
 
   return {
    data : {

@@ -54,6 +54,28 @@ type UserProfile = {
     profile_image_24: string;
     profile_image_32: string;
     profile_image_48: string;
+    profile_title: string;
+    profile_phone: string;
+    profile_skype: string;
+    profile_real_name: string;
+    profile_real_name_normalized: string;
+    profile_display_name: string;
+    profile_display_name_normalized: string;
+    profile_fields: null;
+    profile_status_text: string;
+    profile_status_emoji: string;
+    profile_status_expiration: number;
+    profile_avatar_hash: string;
+    profile_image_original: string;
+    is_custom_image: boolean;
+    profile_email: string;
+    profile_image_72: string;
+    profile_image_192: string;
+    profile_image_512: string;
+    profile_image_1024: string;
+    profile_team: string;
+    profile_first_name: string;
+    profile_last_name: string;
   };
   
 
@@ -172,7 +194,7 @@ type TeamIcon = {
   image_132: string;
 };
 
-type Team = {
+export type Team = {
   id: string;
   name: string;
   url: string;
@@ -181,17 +203,20 @@ type Team = {
   icon: TeamIcon;
   avatar_base_url: string;
   is_verified: boolean;
-};
-
-export type TeamApiResponse = {
-  ok: boolean;
-  team: Team;
+  icon_image_default: boolean;
+  icon_image_34: string;
+  icon_image_44: string;
+  icon_image_68: string;
+  icon_image_88: string;
+  icon_image_102: string;
+  icon_image_230: string;
+  icon_image_132: string;
 };
 
 export type LoadData =  {
     channels: Conversation[],
     users: User[],
-    team: TeamApiResponse
+    team: Team
     channel_id: string
     is_thread: boolean
     messages?: Message[]

@@ -1,4 +1,4 @@
-import type { TeamApiResponse, LoadData } from '$lib/types/types';
+import type { Team, LoadData } from '$lib/types/types';
 import type { PageServerLoad } from './$types';
 
 
@@ -10,7 +10,7 @@ export const load = (async ({ parent  }) => {
     is_thread: true,
     channels,
     users,
-    team: team as TeamApiResponse
+    team: team as Team
     
    } as LoadData
   };

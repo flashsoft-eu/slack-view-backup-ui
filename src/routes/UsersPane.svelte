@@ -20,7 +20,7 @@
         <div class="user card ml-10 mr-10 my-2 bg-base-100 shadow-xl">
             <div class="card-body">
                 <div class="card-title flex items-center">
-              <h2 class="font-bold"><img src={user.profile?.image_192} alt="user avatar" class="inline-block w-8 h-8 rounded-full" /> <span class="ml-1">{user?.name}</span> </h2>
+              <h2 class="font-bold"><img src={user.profile?.image_192 ?? user?.profile_image_192} alt="user avatar" class="inline-block w-8 h-8 rounded-full" /> <span class="ml-1">{user?.name}</span> </h2>
               </div>
               <p class="text-[1.1rem] px-2 pt-2 pb-1">Flags:</p>
              <ul>
@@ -36,12 +36,12 @@
              </ul>
              <p class="text-[1.1rem] px-2 pt-2 pb-1">Profile:</p>
              <ul>
-                <li>Email: <b>{user.profile.email}</b></li>
-                <li>First Name: <b>{user.profile.first_name}</b></li>
-                <li>Last Name: <b>{user.profile.last_name}</b></li>
-                <li>Avatar Hash: <b>{user.profile.avatar_hash}</b></li>
-                {#if user.profile.phone}
-                <li>Phone: <b>{user.profile.phone}</b></li>
+                <li>Email: <b>{user?.profile?.email ?? user.profile_email}</b></li>
+                <li>First Name: <b>{user?.profile?.first_name ?? user.profile_first_name}</b></li>
+                <li>Last Name: <b>{user?.profile?.last_name ?? user.profile_last_name}</b></li>
+                <li>Avatar Hash: <b>{user?.profile?.avatar_hash ?? user.profile_avatar_hash}</b></li>
+                {#if (user?.profile?.phone || user?.profile_phone)}
+                <li>Phone: <b>{user?.profile?.phone ?? user?.profile_phone}</b></li>
                 {/if}
              </ul>
             </div>

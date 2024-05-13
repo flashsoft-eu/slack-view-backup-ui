@@ -12,8 +12,6 @@
     let page = 0
     let isThread = data.data?.is_thread
     let messages = data.data?.messages || []
-
-    console.log(messeges, messages);
  
     let loading = false
     // const loadNext = () => {

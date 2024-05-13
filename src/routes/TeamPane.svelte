@@ -1,5 +1,5 @@
 <script lang="ts">    
-    import type { LoadData, TeamApiResponse } from '$lib/types/types';
+    import type { LoadData, Team } from '$lib/types/types';
         
     export let data: {
             data: LoadData | null
@@ -7,12 +7,8 @@
             data: null
         }
     
-     const team = data.data?.team?.team as TeamApiResponse['team']
+     const team = data.data?.team as Team
         
-     
-     
-    // console.log(data.data?.firstChannel);
-    // console.log(getUser(data.data?.users?.[0]?.id, data.data?.users));
     
     </script>
      <div class="users flex flex-col">
@@ -20,7 +16,7 @@
         <div class="user card ml-10 mr-10 my-2 bg-base-100 shadow-xl">
             <div class="card-body">
                 <div class="card-title flex items-center">
-              <h2 class="font-bold"><img src={team.icon.image_230} alt="user avatar" class="inline-block w-8 h-8 rounded-full" /> <span class="ml-1">{team?.name}</span> </h2>
+              <h2 class="font-bold"><img src={team?.icon?.image_230 ?? team?.icon_image_230} alt="user avatar" class="inline-block w-8 h-8 rounded-full" /> <span class="ml-1">{team?.name}</span> </h2>
               </div>
               <p class="text-[1.1rem] px-2 pt-2 pb-1">Data:</p>
              <ul>
