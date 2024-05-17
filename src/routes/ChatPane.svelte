@@ -1,6 +1,7 @@
 <script lang="ts">
     import { getUser } from '$lib/utils/relations';
     import type { LoadData } from '$lib/types/types';
+    import { page as SvelteKitPage } from '$app/stores';  
     import IntersectionObserver from './components/util/IntersectionObserver.svelte';
     let element: HTMLElement | null = null
     export let data: {
@@ -9,25 +10,31 @@
         data: null
     }
     
-    let page = 0
+    let offset = 0
     let isThread = data.data?.is_thread
     let messages = data.data?.messages || []
+    let hasMore = true
+    const host =  $SvelteKitPage.url.host
+    const isDev = host.includes('localhost') || host.includes('127.0')
+    const protocol = isDev ? 'http://' : 'https://'
+    const loadMoreUrl = protocol + host + '/api/channel/' + data.data?.channel_id
  
     let loading = false
-    // const loadNext = () => {
-    //     if (loading  || ( data?.data?.channel?.length && page > data?.data?.channel?.length) ) return
-    //     loading = true
-    //     page++
-    //     messages = [...messages, ...(data.data?.channel?.[page] || [])]
-    //     loading = false
-    // }
+    const loadNext = async () => {
+        console.log('loading next')
+        if (loading  || !hasMore ) return
+        loading = true
+        const req = await fetch(loadMoreUrl + `?offset=${offset}&limit=20`)
+        console.log(req.ok)
+        const posts = await req.json()
+        messages = [...messages, ...posts.data]
+        loading = false
+    }
 
     const isoStringFromTs = (ts: string) => {
         const date = new Date(parseInt(ts) * 1000)
         return date.toISOString()
     }
-
-    // console.log(getUser(data.data?.users?.[0]?.id, data.data?.users));
     
     </script>
     <div class="flex items-center justify-start flex-col w-full">
@@ -61,9 +68,9 @@
         {#if loading} 
                 <p class="text-[1.2rem]">LOADING...</p>
         {/if}
-        <!-- <IntersectionObserver on:intersect={loadNext} {element}>
-            <div bind:this={element}></div>
-          </IntersectionObserver> -->
+        <IntersectionObserver on:intersect={loadNext} {element}>
+            <div bind:this={element}>ssssssssssssssss</div>
+          </IntersectionObserver>
         {:else}
         <li class="ml-4">No messages found</li>
         {/if} 

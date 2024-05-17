@@ -45,7 +45,7 @@ DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inl
     <li class="-ml-12 block"></li>
     {#each channels as item}
         <li>
-       <a href="{`/channel/${item.id}`}" class="block p-4 hover:bg-gray-700 hover:text-white">
+       <a href="{`/channel/${item.id}`}" class="block p-2 hover:bg-gray-700 hover:text-white">
        <span class="block mt-2 text-[1rem]">
        <i><b>#</b></i>{item.name}
         </span>
@@ -60,7 +60,7 @@ DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inl
     {#each ims as item}
     {@const user = getUser(item.user, data.data?.users || [])}
         <li>
-       <a href="{`/channel/${item.id}`}" class="block p-4 hover:bg-gray-700 hover:text-white">
+       <a href="{`/channel/${item.id}`}" class="block p-2 hover:bg-gray-700 hover:text-white">
        <span class="block mt-2 text-[1rem]">
         DM: {user?.name} <img src={user?.profile?.image_24 ?? user?.profile_image_24} alt="user avatar" class="inline-block w-4 h-4 rounded-full" /> 
         </span>
@@ -74,7 +74,7 @@ DM: {user?.name} <img src={user?.profile?.image_24} alt="user avatar" class="inl
     <li class="-ml-12 block"></li>
     {#each mpims as item}
         <li>
-       <a href="{`/channel/${item.id}`}" class="block p-4 hover:bg-gray-700 hover:text-white">
+       <a href="{`/channel/${item.id}`}" class="block p-2 hover:bg-gray-700 hover:text-white">
        <span class="block mt-2 text-[1rem]">
         {item.purpose?.value || item?.purpose_value || 'Group'}
         </span>
