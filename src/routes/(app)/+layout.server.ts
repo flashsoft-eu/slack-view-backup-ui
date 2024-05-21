@@ -1,8 +1,17 @@
 import type { LayoutServerLoad } from './$types';
 import type { User, Conversation, LoadData, Team, Channel } from '$lib/types/types';
 import { getChannels, getUsers, getTeam, getMessages } from '$lib/utils/sqlite';
- 
-export const load = (async () => {
+import { checkAuth } from '$lib/utils/auth';
+import { redirect } from '@sveltejs/kit';
+
+
+export const load = (async ( req) => {
+
+   try {
+    await checkAuth(req)
+   } catch (e) {
+    return redirect(302, '/login')
+   }
 
   const [channels, users, team] = await Promise.all(
     [new Promise((resolve) => {

@@ -7,8 +7,6 @@
 	} = {
 		data: null
 	};
-
-	console.log(data)
  
 </script>
 
